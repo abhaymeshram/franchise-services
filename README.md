@@ -6,7 +6,7 @@
 
 - [Setup](#setup)
 - [Docker](#docker)
-- [ApiDetails](#configuration)
+- [Configuration](#configuration)
 - [EncryptPassword](#encryptpassword)
 - [Usage](#usage)
 
