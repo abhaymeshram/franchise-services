@@ -115,7 +115,7 @@ http://localhost:8080/franchise-services/swagger-ui.html
     idNumber: defined as String to handle alphbates in id
     contactPhone: defined as String to have country code
     
-    EntityListeners: AuditListener is created to handle created and update date. In order to avoid adding extra logic.
+    EntityListeners: AuditListener is added to update created and updated date before persit and update entity.
     
 ```
 
