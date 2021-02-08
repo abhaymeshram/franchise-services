@@ -93,3 +93,30 @@ Enter Secret key ooredoo-franchise (Choose any key. Please change it accordingly
 
 ## Usage
 http://localhost:8080/franchise-services/swagger-ui.html
+
+1) Save Franchise
+
+```
+    {
+      "applicantsName": "Test",
+      "idNumber": "Z28043",
+      "birthDate": "2021-02-08",
+      "contactAddress": "Qatar",
+      "contactPhone": "+974333256",
+      "contactEmail": "abc@gmail.com",
+      "interestAboutBrand": "Ooreado Mobile",
+      "investmentAmount": 250000,
+      "preferredOperateLocation": "Qatar",
+      "notes": "City center mall"
+    }
+    
+    applicantsName, idNumber: Is mandatory field
+    contactEmail: is annotated as email
+    idNumber: defined as String to handle alphbates in id
+    contactPhone: defined as String to have country code
+    
+    EntityListeners: AuditListener is created to handle created and update date. In order to avoid adding extra logic.
+    
+```
+
+
