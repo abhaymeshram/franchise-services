@@ -94,9 +94,13 @@ Enter Secret key ooredoo-franchise (Choose any key. Please change it accordingly
 ## Usage
 http://localhost:8080/franchise-services/swagger-ui.html
 
-1) Save Franchise
+1) Save Franchise 
 
 ```
+URL: http://localhost:8080/franchise-services/v1/save
+Method: POST
+Request:
+
     {
       "applicantsName": "Test",
       "idNumber": "Z28043",
@@ -116,6 +120,129 @@ http://localhost:8080/franchise-services/swagger-ui.html
     contactPhone: defined as String to have country code
     
     EntityListeners: AuditListener is added to update created and updated date before persit and update entity.
+    
+```
+
+2) Update
+
+```
+URL: http://localhost:8080/franchise-services/v1/update
+Method: PUT
+Request:
+
+    {
+      "applicantsName": "Test",
+      "idNumber": "Z28043",
+      "birthDate": "2021-02-08",
+      "contactAddress": "Qatar",
+      "contactPhone": "+974333256",
+      "contactEmail": "abc@gmail.com",
+      "interestAboutBrand": "Ooreado Mobile",
+      "investmentAmount": 250000,
+      "preferredOperateLocation": "Qatar",
+      "notes": "Changed",
+      "createdDate": "2021-02-08T18:34:58.298Z",
+      "id": 1,
+    }    
+```
+
+3) GetAll
+
+```
+URL: http://localhost:8080/franchise-services/v1/getAll
+Method: GET
+Response:
+
+    [
+      {
+        "createdDate": "2021-02-08T17:29:39.992+00:00",
+        "updateDate": null,
+        "id": 2,
+        "applicantsName": "Abhay",
+        "idNumber": "string",
+        "birthDate": "2021-02-08",
+        "contactAddress": "string",
+        "contactPhone": "string",
+        "contactEmail": "string@gmail.com",
+        "interestAboutBrand": "string",
+        "investmentAmount": 0,
+        "preferredOperateLocation": "string",
+        "notes": "string"
+      }
+  ]  
+```
+
+4) Delete
+
+```
+URL: http://localhost:8080/franchise-services/v1/delete/1
+Method: DELETE
+```
+
+5) Filter Franchise based on applicantsName, idNumber, contactEmail & contactPhone
+
+```
+URL: http://localhost:8080/franchise-services/v1/franchise/filter
+Method: POST
+*** case 1: Fetch using applicantsName ***
+Request:
+ 
+    {
+      "applicantsName": "Test"
+    }
+   
+case 2: Fetch using contactEmail ***
+Request:
+ 
+    {
+      "contactEmail": "Test"
+    }
+ 
+case 3: Fetch using contactEmail & applicantsName***
+Request:
+ 
+    {
+      "contactEmail": "Test",
+      "applicantsName": "Test"
+    }
+    
+case 4: Fetch all the record. We can remove GetAll API as both are serving same result/
+Request:
+ 
+    {
+    
+    }
+    
+Specification has been added to handle search criteria using like fields
+
+List<Franchise> franchises = franchiseRepository.findAll(searchSpec(franchise));
+
+private Specification<Franchise> searchSpec(Franchise franchise) {
+        return new Specification<Franchise>() {
+            @Override
+            public Predicate toPredicate(Root<Franchise> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder cb) {
+                List<Predicate> predicates = new ArrayList<>();
+
+                if (franchise.getApplicantsName() != null) {
+                    predicates.add(cb.like(root.get("applicantsName"), "%" + franchise.getApplicantsName() + "%"));
+                }
+
+                if (franchise.getIdNumber() != null) {
+                    predicates.add(cb.like(root.get("idNumber"), "%" + franchise.getIdNumber() + "%"));
+                }
+
+                if (franchise.getContactEmail() != null) {
+                    predicates.add(cb.like(root.get("contactEmail"), "%" + franchise.getContactEmail() + "%"));
+                }
+
+                if (franchise.getContactPhone() != null) {
+                    predicates.add(cb.like(root.get("contactPhone"), "%" + franchise.getContactPhone() + "%"));
+                }
+
+                return cb.and(predicates.toArray(new Predicate[0]));
+            }
+        };
+    }
     
 ```
 
