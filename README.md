@@ -206,15 +206,17 @@ Request:
       "applicantsName": "Test"
     }
     
-case 4: Fetch all the record. We can remove GetAll API as both are serving same result/
+case 4: Fetch all the record. We can remove GetAll API as both are serving same result
 Request:
  
     {
     
     }
     
+```
 Specification has been added to handle search criteria using like fields
 
+```
 List<Franchise> franchises = franchiseRepository.findAll(searchSpec(franchise));
 
 private Specification<Franchise> searchSpec(Franchise franchise) {
@@ -243,7 +245,7 @@ private Specification<Franchise> searchSpec(Franchise franchise) {
             }
         };
     }
-    
-```
+ ```
+
 
 
