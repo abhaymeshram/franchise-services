@@ -24,7 +24,7 @@ Using mvn package
 
 ## Docker
 
-Docker Build using docker command
+Docker build image using docker command
 
 ```
  git clone https://github.com/abhaymeshram/franchise-services.git
@@ -33,7 +33,7 @@ Docker Build using docker command
  docker run -p8080:8080 ooredoo/franchise-services
 ```
 
-Docker Build using jib-maven-plugin
+Docker Build image using jib-maven-plugin
 
 ```
   git clone https://github.com/abhaymeshram/franchise-services.git
