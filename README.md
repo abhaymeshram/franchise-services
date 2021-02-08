@@ -7,6 +7,7 @@
 - [Setup](#setup)
 - [Docker](#docker)
 - [ApiDetails](#configuration)
+- [EncryptPassword](#encryptpassword)
 - [Usage](#usage)
 
 
@@ -87,7 +88,14 @@ spring.datasource.password = ENC(iFQcDx4828bsUuQA5lBp2A==)
 # secret keys ooredoo-franchise
 ```
 
-
+## EncryptPassword
+```
+Jasypt Online Encryption
+https://www.devglan.com/online-tools/jasypt-online-encryption-decryption
+Enter password in plain text format
+Select Two way encryption
+Enter Secret key ooredoo-franchise (Choose any key. Please change it accordingly in application properties)
+```
 
 ## Usage
 http://localhost:8080/franchise-services/swagger-ui.html
