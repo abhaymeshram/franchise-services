@@ -72,9 +72,6 @@ jasypt.encryptor.password = ooredoo-franchise
 spring.datasource.url = jdbc:mysql://localhost:3306/franchise
 spring.datasource.username = root
 spring.datasource.password = ENC(Qe6wxD2BcdaL/610K3CVnw==)
-
-#Default password is sa. Encrypt using https://www.devglan.com/online-tools/jasypt-online-encryption-decryption
-# secret keys ooredoo-franchise
 ```
 
 **application-local.properties**
@@ -83,9 +80,6 @@ spring.datasource.password = ENC(Qe6wxD2BcdaL/610K3CVnw==)
 spring.datasource.url = jdbc:h2:mem:db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
 spring.datasource.username = sa
 spring.datasource.password = ENC(iFQcDx4828bsUuQA5lBp2A==)
-
-#Default password is sa. Can be encrypted using https://www.devglan.com/online-tools/jasypt-online-encryption-decryption
-# secret keys ooredoo-franchise
 ```
 
 ## EncryptPassword
